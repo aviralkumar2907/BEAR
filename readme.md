@@ -3,11 +3,16 @@ This is the code for NeurIPS 2019 paper Stabilizing Off-Policy Q-Learning via Bo
 Our code is built off of the BCQ[https://github.com/sfujim/BCQ] repository. To run BEAR, please use a command like this:
 
 ```
-python main.py --buffer_name=buffer_walker_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR --env_name=Walker2d-v2  --log_dir=data_walker_BEAR/ --lagrange_thresh=10.0 --distance_type=MMD --mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=20.0 --kernel_type=gaussian
+python main.py --buffer_name=buffer_walker_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR
+--env_name=Walker2d-v2 --log_dir=data_walker_BEAR/ --lagrange_thresh=10.0 
+--distance_type=MMD --mode=auto --num_samples_match=5 --lamda=0.0 --version=0 
+--mmd_sigma=20.0 --kernel_type=gaussian
 ```
 
 ```
-python main.py --buffer_name=buffer_hopper_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR --env_name=Hopper-v2  --log_dir=data_hopper_BEAR/ --lagrange_thresh=10.0 --distance_type=MMD --mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=10.0 --kernel_type=laplacian
+python main.py --buffer_name=buffer_hopper_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR
+--env_name=Hopper-v2 --log_dir=data_hopper_BEAR/ --lagrange_thresh=10.0 --distance_type=MMD
+--mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=10.0 --kernel_type=laplacian
 ```
 
 Algorithms Supported:
@@ -32,5 +37,5 @@ If you use this code in your research, please cite our paper:
   url          = {http://arxiv.org/abs/1906.00949},
 }
 ```
-								   }
+
 For any questions/issues please contact Aviral Kumar at aviralk@berkeley.edu.
