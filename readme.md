@@ -26,6 +26,16 @@ Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructi
 4. KL Control (algo_name=KLControl) [Jacques et.al. arxiv 2019]
 5. Deep Q-learning from Demonstrations (algo_name=DQfD) [Hester et.al. 2017]
 
+**Hyperparameter definitions**:
+1. `mmd_sigma`: Standard deviation of the kernel used for MMD computation
+2. `kernel_type`: (gaussian|laplacian) Kernel type used for computation of MMD
+3. `num_samples_match`: Number of samples used for computing sampled MMD
+4. `version`: (0|1|2): Whether to use min(0), max(1) or mean(2) of Q-values from the ensemble for policy improvement
+5. `buffer_name`: Path to the buffer (prefered .pkl files, other options available in `utils.py`
+6. `use_ensemble_variance`: Whether to use ensemble variance for the policy improvement step
+7. `lagrange_thresh`: The threshold for log of the Lagrange multiplier
+8. `cloning`: Set this flag to run behaviour cloning
+
 **Hyperparameters that generally work well (for BEAR, across environments)**:
 1. mmd_sigma=10.0, kernel_type=laplacian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
 2. mmd_sigma=20.0, kernel_type=gaussian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
