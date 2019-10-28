@@ -37,10 +37,10 @@ Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructi
 8. `cloning`: Set this flag to run behaviour cloning
 
 **Hyperparameters that generally work well (for BEAR, across environments)**:
-1. mmd_sigma=10.0, kernel_type=laplacian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
-2. mmd_sigma=20.0, kernel_type=gaussian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
+1. `mmd_sigma=10.0`, `kernel_type=laplacian`, `num_samples_match=5`, `version=0 or 2`, `lagrange_thresh=10.0`, `mode=auto`
+2. `mmd_sigma=20.0`, `kernel_type=gaussian`, `num_samples_match=5`, `version=0 or 2`, `lagrange_thresh=10.0`, `mode=auto`
 
-We have removed ensembles from this version, and we just use a minimum/average over 2 Q-functions, without an ensemble-based conservative estimate based on sample variance. This is because we didn't find ensemble variance to in general provide benefits, although it doesn't hurt either.
+We have removed ensembles from this version, and we just use a minimum/average over 2 Q-functions, without an ensemble-based conservative estimate based on sample variance. This is because we didn't find ensemble variance to in general provide benefits, although it doesn't hurt either. However, the code for ensembles is present in `EnsembleCritic` in the file `algos.py`. Also, please set `use_ensemble_variance=True` to use ensembles in the BEAR algorithm.
 
 If you use this code in your research, please cite our paper:
 ```
