@@ -1,6 +1,8 @@
+# BEAR (Bootstrapping Error Accumulation Reduction)
+
 This is the code for NeurIPS 2019 paper Stabilizing Off-Policy Q-Learning via Bootstrapping Error Reduction.
 
-Our code is built off of the BCQ[https://github.com/sfujim/BCQ] repository. To run BEAR, please use a command like this:
+Our code is built off of the BCQ[https://github.com/sfujim/BCQ] repository and uses many similar components. To run BEAR, please use a command like this:
 
 ```
 python main.py --buffer_name=buffer_walker_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR
@@ -14,17 +16,19 @@ python main.py --buffer_name=buffer_hopper_300_curr_action.pkl --eval_freq=1000 
 --env_name=Hopper-v2 --log_dir=data_hopper_BEAR/ --lagrange_thresh=10.0 --distance_type=MMD
 --mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=10.0 --kernel_type=laplacian
 ```
+**Installation Instructions**:
+Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructions on the installation of the rlkit environment as supported by your machine. Please make sure to use `mujoco_py==1.50.1.56` and `mjpro150` for the MuJoCo installation. Then run the above command. Any version of PyTorch >= 0.4 is supported. For easy visualization, we recommmend installing viskit[https://github.com/vitchyr/viskit] and using viskit for visualization. This repository is configured to writing log-files that are compatible with viskit.  
 
-Algorithms Supported:
+**Algorithms Supported**:
 1. BCQ (algo_name=BCQ) [Fujimoto et.al. ICML 2019]
 2. TD3 (algo_name=TD3) [Fujimoto et.al. ICML 2018]
 3. Behavior Cloning (algo_name=BC)
 4. KL Control (algo_name=KLControl) [Jacques et.al. arxiv 2019]
 5. Deep Q-learning from Demonstrations (algo_name=DQfD) [Hester et.al. 2017]
 
-Hyperparameters that generally work well (for BEAR):
+**Hyperparameters that generally work well (for BEAR, across environments)**:
 1. mmd_sigma=10.0, kernel_type=laplacian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
-2. mmd_sigmma=20.0, kernel_type=gaussian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
+2. mmd_sigma=20.0, kernel_type=gaussian, num_samples_match=5, version=0 or 2, lagrange_thresh=10.0, mode=auto
 
 We have removed ensembles from this version, and we just use a minimum/average over 2 Q-functions, without an ensemble-based conservative estimate based on sample variance. This is because we didn't find ensemble variance to in general provide benefits, although it doesn't hurt either.
 
