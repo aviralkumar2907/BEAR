@@ -11,6 +11,7 @@ class ReplayBuffer(object):
 		self.storage['rewards'] = np.zeros((1000000, 1), np.float32)
 		self.storage['terminals'] = np.zeros((1000000, 1), np.float32)
 		self.storage['bootstrap_mask'] = np.zeros((10000000, 4), np.float32)
+		self.buffer_size = 1000000
 		self.ctr = 0
 
 	# Expects tuples of (state, next_state, action, reward, done)
@@ -20,6 +21,8 @@ class ReplayBuffer(object):
 		self.storage['actions'][self.ctr] = data[2]
 		self.storage['rewards'][self.ctr] = data[3]
 		self.storage['terminals'][self.ctr] = data[4]
+		self.ctr += 1
+		self.ctr = self.ctr % self.buffer_size
 
 	def sample(self, batch_size, with_data_policy=False):
 		ind = np.random.randint(0, self.storage['observations'].shape[0], size=batch_size)
