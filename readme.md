@@ -17,7 +17,7 @@ python main.py --buffer_name=buffer_hopper_300_curr_action.pkl --eval_freq=1000 
 --mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=10.0 --kernel_type=laplacian
 ```
 **Installation Instructions**:
-Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructions on the installation of the rlkit environment as supported by your machine. Please make sure to use `mujoco_py==1.50.1.56` and `mjpro150` for the MuJoCo installation. Then run the above command. Any version of PyTorch >= 1.1.0 is supported (Note: Default rlkit pytorch version is 0.4.1, but this codebase needs pytorch >= 1.1.0). For easy visualization, we recommmend installing viskit[https://github.com/vitchyr/viskit] and using viskit for visualization. This repository is configured to writing log-files that are compatible with viskit.  
+Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructions on the installation of the rlkit environment as supported by your machine. Please make sure to use `mujoco_py==1.50.1.56` and `mjpro150` for the MuJoCo installation. Then run the above command. Any version of PyTorch >= 1.1.0 is supported (Note: Default rlkit pytorch version is 0.4.1, but this codebase needs pytorch >= 1.1.0; Also you might need to update numpy in your system to the latest numpy version). For easy visualization, we recommmend installing viskit[https://github.com/vitchyr/viskit] and using viskit for visualization. This repository is configured to writing log-files that are compatible with viskit.  
 
 **Algorithms Supported**:
 1. BCQ (algo_name=BCQ) [Fujimoto et.al. ICML 2019]
