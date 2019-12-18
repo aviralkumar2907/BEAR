@@ -8,13 +8,13 @@ Our code is built off of the BCQ[https://github.com/sfujim/BCQ] repository and u
 python main.py --buffer_name=buffer_walker_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR
 --env_name=Walker2d-v2 --log_dir=data_walker_BEAR/ --lagrange_thresh=10.0 
 --distance_type=MMD --mode=auto --num_samples_match=5 --lamda=0.0 --version=0 
---mmd_sigma=20.0 --kernel_type=gaussian
+--mmd_sigma=20.0 --kernel_type=gaussian --use_ensemble_variance="False"
 ```
 
 ```
 python main.py --buffer_name=buffer_hopper_300_curr_action.pkl --eval_freq=1000 --algo_name=BEAR
 --env_name=Hopper-v2 --log_dir=data_hopper_BEAR/ --lagrange_thresh=10.0 --distance_type=MMD
---mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=10.0 --kernel_type=laplacian
+--mode=auto --num_samples_match=5 --lamda=0.0 --version=0 --mmd_sigma=10.0 --kernel_type=laplacian --use_ensemble_variance="False"
 ```
 **Installation Instructions**:
 Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructions on the installation of the rlkit environment as supported by your machine. Please make sure to use `mujoco_py==1.50.1.56` and `mjpro150` for the MuJoCo installation. Then run the above command. Any version of PyTorch >= 1.1.0 is supported (Note: Default rlkit pytorch version is 0.4.1, but this codebase needs pytorch >= 1.1.0; Also you might need to update numpy in your system to the latest numpy version). For easy visualization, we recommmend installing viskit[https://github.com/vitchyr/viskit] and using viskit for visualization. This repository is configured to writing log-files that are compatible with viskit.  
@@ -32,7 +32,7 @@ Please download rlkit[https://github.com/vitchyr/rlkit] and follow the instructi
 3. `num_samples_match`: Number of samples used for computing sampled MMD
 4. `version`: (0|1|2): Whether to use min(0), max(1) or mean(2) of Q-values from the ensemble for policy improvement
 5. `buffer_name`: Path to the buffer (prefered .pkl files, other options available in `utils.py`
-6. `use_ensemble_variance`: Whether to use ensemble variance for the policy improvement step
+6. `use_ensemble_variance`: Whether to use ensemble variance for the policy improvement step (Set to False, else can result in NaNs)
 7. `lagrange_thresh`: The threshold for log of the Lagrange multiplier
 8. `cloning`: Set this flag to run behaviour cloning
 
