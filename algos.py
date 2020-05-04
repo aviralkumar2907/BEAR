@@ -918,7 +918,7 @@ class BCQ(object):
                 target_Q = 0.75 * torch.min(target_Q1, target_Q2) + 0.25 * torch.max(target_Q1, target_Q2)
                 target_Q = target_Q.view(batch_size, -1).max(1)[0].view(-1, 1)
 
-                target_Q = reward + discount * target_Q
+                target_Q = reward + done * discount * target_Q
 
             current_Q1, current_Q2 = self.critic(state, action)
             critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
