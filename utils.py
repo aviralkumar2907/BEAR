@@ -27,7 +27,6 @@ class ReplayBuffer(object):
 	def sample(self, batch_size, with_data_policy=False):
 		ind = np.random.randint(0, self.storage['observations'].shape[0], size=batch_size)
 		state, next_state, action, reward, done = [], [], [], [], []
-		# import ipdb; ipdb.set_trace()
 
 		s = self.storage['observations'][ind]
 		a = self.storage['actions'][ind]
@@ -60,15 +59,10 @@ class ReplayBuffer(object):
 		np.save("./buffers/"+filename+".npy", self.storage)
 
 	def load(self, filename, bootstrap_dim=None):
+		"""Deprecated, use load_hdf5 in main.py with the D4RL environments""" 
 		with gzip.open(filename, 'rb') as f:
 				self.storage = pickle.load(f)
-		# with open(filename, 'rb') as f:
-		#        self.storage = pickle.load(f)
-
-		# storage = np.load(filename)
-		# self.storage = dict()
-		# for key in storage.keys():
-		#       self.storage[key] = storage[key]
+		
 		sum_returns = self.storage['rewards'].sum()
 		num_traj = self.storage['terminals'].sum()
 		if num_traj == 0:
