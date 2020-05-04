@@ -32,6 +32,7 @@ def load_hdf5_mujoco(dataset, replay_buffer):
     replay_buffer.storage['actions'] = _actions
     replay_buffer.storage['rewards'] = _rew 
     replay_buffer.storage['terminals'] = _done
+    import ipdb; ipdb.set_trace()
     replay_buffer.buffer_size = N-1
 
 def load_hdf5_others(dataset, replay_buffer):
@@ -220,10 +221,10 @@ if __name__ == "__main__":
 
     # Load buffer
     replay_buffer = utils.ReplayBuffer()
-    if 'maze' in args.env_name or 'human' in args.env_name or 'cloned' in env.name:
+    if 'maze' in args.env_name or 'human' in args.env_name or 'cloned' in args.env_name:
         load_hdf5_others(env.unwrapped.get_dataset(), replay_buffer)
     else:
-        load_hdf5(env.unwrapped.get_dataset(), replay_buffer)
+        load_hdf5_mujoco(env.unwrapped.get_dataset(), replay_buffer)
     
     evaluations = []
 
