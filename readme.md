@@ -1,5 +1,7 @@
 # BEAR (Bootstrapping Error Accumulation Reduction)
 
+**Update (07/17)**: We have released a cleaner implementation of BEAR on top of rlkit at: https://github.com/rail-berkeley/d4rl_evaluations, which goes with the latest version of the D4RL paper. We would encourage all users to use this new implementation as compared to this repo. We made hyperparameters consistent across environments, and retuned the algorithm for the new D4RL datasets.   
+
 **Update (05/04)**: Added support for D4RL environments, https://github.com/rail-berkeley/d4rl. 
 
 This is the code for NeurIPS 2019 paper Stabilizing Off-Policy Q-Learning via Bootstrapping Error Reduction. Please refer to the project page: https://sites.google.com/view/bear-off-policyrl for details and slides explaining the algorithm.
